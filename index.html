@@ -1,0 +1,118 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="midnight">
+  <main class="app">
+    <section class="topbar" aria-labelledby="app-title">
+      <div>
+        <p class="eyebrow">Lightweight JavaScript Game</p>
+        <h1 id="app-title">Tic Tac Toe</h1>
+      </div>
+
+      <label class="field compact">
+        <span>Theme</span>
+        <select id="themeSelect">
+          <option value="midnight">Midnight</option>
+          <option value="sunrise">Sunrise</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="panel setup" aria-label="Game setup">
+      <div class="field-grid">
+        <label class="field">
+          <span>Game mode</span>
+          <select id="modeSelect">
+            <option value="local">Local 2 players</option>
+            <option value="ai">Play vs AI</option>
+            <option value="online">Online multiplayer</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Board size</span>
+          <select id="sizeSelect">
+            <option value="3">3 × 3</option>
+            <option value="4">4 × 4</option>
+            <option value="5">5 × 5</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Player X name</span>
+          <input id="playerXInput" type="text" maxlength="18" value="Player X" />
+        </label>
+
+        <label class="field">
+          <span>Player O name</span>
+          <input id="playerOInput" type="text" maxlength="18" value="Player O" />
+        </label>
+      </div>
+
+      <div id="onlinePanel" class="online-panel" hidden>
+        <label class="field">
+          <span>Your online name</span>
+          <input id="onlineNameInput" type="text" maxlength="18" value="Player" />
+        </label>
+
+        <label class="field">
+          <span>Room code</span>
+          <input id="roomInput" type="text" maxlength="20" placeholder="e.g. blue-fox-42" />
+        </label>
+
+        <label class="field">
+          <span>Supabase URL</span>
+          <input id="supabaseUrlInput" type="url" placeholder="https://your-project.supabase.co" />
+        </label>
+
+        <label class="field">
+          <span>Supabase anon key</span>
+          <input id="supabaseKeyInput" type="password" placeholder="public anon key" />
+        </label>
+
+        <button id="roomButton" class="button secondary" type="button">Create / Join Room</button>
+      </div>
+
+      <div class="actions">
+        <button id="startButton" class="button primary" type="button">Start Game</button>
+        <button id="newRoundButton" class="button secondary" type="button">New Round</button>
+        <button id="resetButton" class="button ghost" type="button">Reset Scores</button>
+      </div>
+    </section>
+
+    <section class="scoreboard" aria-label="Scoreboard">
+      <article class="score-card active" id="xScoreCard">
+        <span id="xNameLabel">Player X</span>
+        <strong id="xScore">0</strong>
+      </article>
+
+      <article class="score-card">
+        <span>Draws</span>
+        <strong id="drawScore">0</strong>
+      </article>
+
+      <article class="score-card" id="oScoreCard">
+        <span id="oNameLabel">Player O</span>
+        <strong id="oScore">0</strong>
+      </article>
+    </section>
+
+    <section class="game-shell" aria-label="Game board">
+      <div class="status-row">
+        <p id="statusText" class="status" role="status" aria-live="polite">Choose settings, then start.</p>
+        <p id="winLengthText" class="meta">3 in a row wins</p>
+      </div>
+
+      <div id="board" class="board" role="grid" aria-label="Tic Tac Toe board"></div>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
